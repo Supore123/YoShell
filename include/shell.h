@@ -9,6 +9,6 @@
 // Function prototypes
 void run_shell_loop(void);
 char *read_line(void);
-char **read_args(char *line)
+char **read_args(char *line);
 
 #endif
