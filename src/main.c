@@ -5,7 +5,7 @@
 #include "shell.h"
 
 
-int main(int argc, char** argv)
+int main()
 {
 	// Load Config Files
 	
