@@ -10,6 +10,6 @@
 void run_shell_loop(void);
 char *read_line(void);
 char **read_args(char *line);
-int execute args(char **args);
+int execute_args(char **args);
 
 #endif

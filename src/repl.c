@@ -15,12 +15,7 @@ void run_shell_loop(void)
 
         line = read_line(); 		// Get the string
         args = read_args(line); 	// Break into parsing 
-        status =  execute_args(); 	// Execute command
-
-	for (int i = 0; args[i] != NULL; i++) 
-	{
-            printf("Arg[%d]: %s\n", i, args[i]);
-        }
+        status =  execute_args(args); 	// Execute command
 
         free(line);
         free(args);
