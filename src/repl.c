@@ -15,7 +15,7 @@ void run_shell_loop(void)
 
         line = read_line(); 		// Get the string
         args = read_args(line); 	// Break into parsing 
-//       status =  execute_args(); 	// Execute command
+        status =  execute_args(); 	// Execute command
 
 	for (int i = 0; args[i] != NULL; i++) 
 	{
@@ -90,3 +90,4 @@ char **read_args(char *line)
     tokens[position] = NULL;
     return tokens;
 }
+
