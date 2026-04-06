@@ -13,11 +13,13 @@ int execute_args(char** args)
 		return 1;
 	}
 	
-	for (int i = 0; i < num_builtins(); i++) {
-        if (strcmp(args[0], builtin_str[i]) == 0) {
-            return (*builtin_func[i])(args);
-        }
-    }
+	for (int i = 0; i < num_builtins(); i++)
+	{
+		if (strcmp(args[0], builtin_str[i]) == 0) 
+		{
+			return (*builtin_func[i])(args);
+		}
+	}
 
 	return launch_process(args);
 }
@@ -96,12 +98,15 @@ int launch_process(char **args)
 	if(pid == 0)
 	{
 		// Child
-		if(execvp(args[0], args) == -1)
-		{
-			perror("yoshell");
-		}
-		exit(EXIT_FAILURE);
+		char *executable_path = resolve_path(args[0]);
 
+		if(execv(executable_path, args) == -1)
+		{
+       		     fprintf(stderr, "yoshell: %s: command not found\n", args[0]);
+        	}
+
+		free(executable_path);
+	        exit(EXIT_FAILURE);
 	}
 	else if(pid<0)
 	{

@@ -15,6 +15,9 @@ char **read_args(char *line);
 int execute_args(char **args);
 int launch_process(char **args); // New helper for external commands
 
+// Path Envs
+char *resolve_path(char *command);
+
 // Custom built in shell handlers
 int shell_cd(char **args);
 int shell_exit(char **args);
