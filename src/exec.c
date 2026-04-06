@@ -115,6 +115,11 @@ int launch_process(char **args)
 		{
  	           waitpid(pid, &status, WUNTRACED);
         	}while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	
+		if (WIFEXITED(status)) 
+		{
+	            return WEXITSTATUS(status);
+        	}
 	}
 
 	return 1;
