@@ -3,22 +3,35 @@
 int shell_cd(char **args);
 int shell_exit(char **args);
 int shell_help(char **args);
+int shell_system(char **args);
 
 char *builtin_str[] = {
   "cd",
   "exit",
-  "help"
+  "help",
+  "sysinfo"
 };
 
 int (*builtin_func[]) (char **) = {
   &shell_cd,
   &shell_exit,
-  &shell_help
+  &shell_help,
+  &shell_system
 };
 
 int num_builtins() 
 {
   return sizeof(builtin_str) / sizeof(char *);
+}
+
+int shell_system(char **args)
+{
+    char hostname[256] = "linux";
+    #ifdef __linux__
+        gethostname(hostname, sizeof(hostname));
+    #endif
+    printf("[%s@%s] \n", getenv("USER"), hostname);
+    return 1;
 }
 
 int shell_cd(char **args) 
